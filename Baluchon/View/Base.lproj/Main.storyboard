@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="AuD-2S-YKP">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Tab Bar Controller-->
+        <scene sceneID="N5m-9Z-6gt">
+            <objects>
+                <tabBarController id="AuD-2S-YKP" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="f9h-yp-BGG">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="MPV-tD-MCM" kind="relationship" relationship="viewControllers" id="pG0-y8-uX3"/>
+                        <segue destination="aj9-oX-clo" kind="relationship" relationship="viewControllers" id="0bA-Zf-Kaa"/>
+                        <segue destination="wc6-Qr-3ii" kind="relationship" relationship="viewControllers" id="JFP-iP-3FY"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OGn-Uz-FNN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1497" y="96"/>
+        </scene>
+        <!--Monney-->
+        <scene sceneID="ONG-VR-mTN">
+            <objects>
+                <navigationController id="MPV-tD-MCM" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Monney" image="dollarsign.circle" catalog="system" id="cxE-hX-bkI"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="mXE-oV-7eG">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="HDb-Bb-UCT" kind="relationship" relationship="rootViewController" id="95B-UG-9ev"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7VU-F4-LMS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-558" y="-561"/>
+        </scene>
+        <!--Form Monney View Controller-->
+        <scene sceneID="cgZ-lx-aCJ">
+            <objects>
+                <viewController id="HDb-Bb-UCT" customClass="FormMonneyViewController" customModule="Baluchon" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="FE3-rP-0xh">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="tNR-dl-oYy"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="uJD-rS-ix1"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Sv2-PI-PAb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="284" y="-562"/>
+        </scene>
+        <!--Translate-->
+        <scene sceneID="IjX-RJ-T63">
+            <objects>
+                <navigationController id="aj9-oX-clo" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Translate" image="doc.append" catalog="system" id="7nw-FL-V2m"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="tmg-Pr-W6t">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="dh7-bO-wZh" kind="relationship" relationship="rootViewController" id="yKz-yQ-Kas"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="coo-Q3-GOb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-559" y="96"/>
+        </scene>
+        <!--Form Translate View Controller-->
+        <scene sceneID="0Hf-K1-N5c">
+            <objects>
+                <viewController id="dh7-bO-wZh" customClass="FormTranslateViewController" customModule="Baluchon" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="KUl-hu-Kuk">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="CnP-3m-rOB"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="h4H-Q1-Lcs"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pYG-zQ-lmf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="284" y="96"/>
+        </scene>
+        <!--Weather-->
+        <scene sceneID="WxU-XP-g6A">
+            <objects>
+                <navigationController id="wc6-Qr-3ii" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Weather" image="cloud" catalog="system" id="u9w-Xi-JWP"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="nIO-eI-oiA">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.74117654560000001" green="0.8392156959" blue="0.88627451660000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="M9Q-vp-5v1" kind="relationship" relationship="rootViewController" id="Ikz-VD-6Wt"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iRN-G5-WDX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-559" y="837"/>
+        </scene>
+        <!--Meteo-->
+        <scene sceneID="RTP-Xt-4dL">
+            <objects>
+                <viewController id="M9Q-vp-5v1" customClass="FormWeatherViewController" customModule="Baluchon" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="9da-nz-T6f">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="nom de la ville" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="WOj-xu-mt1">
+                                <rect key="frame" x="30" y="136" width="315" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="namePhonePad" smartDashesType="no" textContentType="address-level2"/>
+                                <connections>
+                                    <outlet property="delegate" destination="M9Q-vp-5v1" id="ofw-ny-lK0"/>
+                                </connections>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ville de depart" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yzr-Ry-7dV">
+                                <rect key="frame" x="30" y="84" width="188.5" height="22"/>
+                                <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="19"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ville d'arriver" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="71S-XI-jqu">
+                                <rect key="frame" x="30" y="200" width="182.5" height="22"/>
+                                <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="19"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="nom de la ville" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Ncd-iU-lLn">
+                                <rect key="frame" x="30" y="252" width="315" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="namePhonePad" smartDashesType="no" textContentType="address-level2"/>
+                                <connections>
+                                    <outlet property="delegate" destination="M9Q-vp-5v1" id="p9y-Ex-VyZ"/>
+                                </connections>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LNH-dl-FAf">
+                                <rect key="frame" x="30" y="549" width="315" height="34"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="19"/>
+                                <state key="normal" title="valider">
+                                    <color key="titleColor" red="0.18039217590000001" green="0.40000003579999999" blue="0.55686277149999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </state>
+                                <connections>
+                                    <action selector="validate" destination="M9Q-vp-5v1" eventType="touchUpInside" id="Hcn-vQ-BNu"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="ySU-kf-ssw"/>
+                        <color key="backgroundColor" red="0.74117654560000001" green="0.8392156959" blue="0.88627451660000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="71S-XI-jqu" firstAttribute="top" secondItem="WOj-xu-mt1" secondAttribute="bottom" constant="30" id="2yC-UI-xCT"/>
+                            <constraint firstItem="ySU-kf-ssw" firstAttribute="trailing" secondItem="yzr-Ry-7dV" secondAttribute="trailing" constant="156.5" id="Crc-XW-jEa"/>
+                            <constraint firstItem="Ncd-iU-lLn" firstAttribute="leading" secondItem="WOj-xu-mt1" secondAttribute="leading" id="LDP-o1-Txb"/>
+                            <constraint firstItem="LNH-dl-FAf" firstAttribute="leading" secondItem="Ncd-iU-lLn" secondAttribute="leading" id="Ovc-AV-LE9"/>
+                            <constraint firstItem="WOj-xu-mt1" firstAttribute="top" secondItem="yzr-Ry-7dV" secondAttribute="bottom" constant="30" id="RJ8-nM-555"/>
+                            <constraint firstItem="71S-XI-jqu" firstAttribute="leading" secondItem="yzr-Ry-7dV" secondAttribute="leading" id="TWQ-nG-WZ8"/>
+                            <constraint firstItem="LNH-dl-FAf" firstAttribute="trailing" secondItem="Ncd-iU-lLn" secondAttribute="trailing" id="ZC7-zR-mrc"/>
+                            <constraint firstItem="ySU-kf-ssw" firstAttribute="trailing" secondItem="71S-XI-jqu" secondAttribute="trailing" constant="162.5" id="dcS-nl-4lg"/>
+                            <constraint firstItem="ySU-kf-ssw" firstAttribute="bottom" secondItem="LNH-dl-FAf" secondAttribute="bottom" constant="35" id="hr9-6E-cRW"/>
+                            <constraint firstItem="Ncd-iU-lLn" firstAttribute="trailing" secondItem="WOj-xu-mt1" secondAttribute="trailing" id="oCi-rX-fpW"/>
+                            <constraint firstItem="ySU-kf-ssw" firstAttribute="trailing" secondItem="Ncd-iU-lLn" secondAttribute="trailing" constant="30" id="oIt-9X-xqN"/>
+                            <constraint firstItem="yzr-Ry-7dV" firstAttribute="top" secondItem="ySU-kf-ssw" secondAttribute="top" constant="40" id="ooi-c8-Ys3"/>
+                            <constraint firstItem="Ncd-iU-lLn" firstAttribute="leading" secondItem="yzr-Ry-7dV" secondAttribute="leading" id="rag-Ti-l6O"/>
+                            <constraint firstItem="Ncd-iU-lLn" firstAttribute="top" secondItem="71S-XI-jqu" secondAttribute="bottom" constant="30" id="ubx-G3-u3I"/>
+                            <constraint firstItem="yzr-Ry-7dV" firstAttribute="leading" secondItem="ySU-kf-ssw" secondAttribute="leading" constant="30" id="yGX-TQ-FuS"/>
+                        </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="OSQ-aW-bRs" appends="YES" id="XcR-vH-dww"/>
+                        </connections>
+                    </view>
+                    <navigationItem key="navigationItem" title="Meteo" id="XfJ-BI-MEy"/>
+                    <connections>
+                        <outlet property="TextFieldCityEnd" destination="Ncd-iU-lLn" id="A3W-8Y-V3I"/>
+                        <outlet property="TextFieldCityStarted" destination="WOj-xu-mt1" id="BmO-jE-BqS"/>
+                        <segue destination="EgW-FK-Ga1" kind="presentation" identifier="segueToResearchWeather" id="G56-4d-dqN"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wOe-Ea-JWl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="OSQ-aW-bRs">
+                    <connections>
+                        <action selector="dismissKeyboard:" destination="M9Q-vp-5v1" id="A40-Xd-tAP"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="283" y="837"/>
+        </scene>
+        <!--Research Weather View Controller-->
+        <scene sceneID="V3H-8I-eqY">
+            <objects>
+                <viewController id="EgW-FK-Ga1" customClass="researchWeatherViewController" customModule="Baluchon" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="3jd-Kl-HDG">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gey-i1-Lxx">
+                                <rect key="frame" x="30" y="84" width="97" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oCW-In-qeI">
+                                <rect key="frame" x="30" y="200" width="97" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="9S7-eS-0Rt"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Gey-i1-Lxx" firstAttribute="leading" secondItem="9S7-eS-0Rt" secondAttribute="leading" constant="30" id="00m-CP-uQS"/>
+                            <constraint firstItem="9S7-eS-0Rt" firstAttribute="trailing" secondItem="oCW-In-qeI" secondAttribute="trailing" constant="248" id="RGT-AN-DYf"/>
+                            <constraint firstItem="oCW-In-qeI" firstAttribute="top" secondItem="Gey-i1-Lxx" secondAttribute="bottom" constant="95" id="Tbj-eN-Ajk"/>
+                            <constraint firstItem="Gey-i1-Lxx" firstAttribute="top" secondItem="9S7-eS-0Rt" secondAttribute="top" constant="84" id="XOv-Fg-yZH"/>
+                            <constraint firstItem="9S7-eS-0Rt" firstAttribute="trailing" secondItem="Gey-i1-Lxx" secondAttribute="trailing" constant="248" id="iE0-KL-ET8"/>
+                            <constraint firstItem="oCW-In-qeI" firstAttribute="leading" secondItem="9S7-eS-0Rt" secondAttribute="leading" constant="30" id="tbA-0D-wKP"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="resultCityEnd" destination="oCW-In-qeI" id="NAb-ym-a2h"/>
+                        <outlet property="resultCityStarted" destination="Gey-i1-Lxx" id="1wZ-zB-QWj"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KSE-WT-x30" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1073" y="837"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="cloud" catalog="system" width="128" height="87"/>
+        <image name="doc.append" catalog="system" width="115" height="128"/>
+        <image name="dollarsign.circle" catalog="system" width="128" height="121"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
