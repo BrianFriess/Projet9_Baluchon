@@ -7,35 +7,84 @@
 
 import Foundation
 
-class WeatherService{
-    
-    var cityStartService = "londres"
-    var cityEndService = "paris"
-    
-    
-    
-    private static let weatherUrl = URL(string: "https://api.openweathermap.org/data/2.5/weather?units=metric&appid=ff3e43da662d54517fae410cfb40ad14&mode=json&q=londres")!
 
+
+protocol  WeatherServiceProtocol {
+    func getWeather(city : String, completion : @escaping (Result<ResultWeather, GFError>) -> Void)
+}
+
+
+
+class WeatherService : WeatherServiceProtocol {
+
+    private let baseUrl =  "https://api.openweathermap.org/data/2.5/weather?units=metric&appid=ff3e43da662d54517fae410cfb40ad14&mode=json&q="
     
-    static func getWeather() {
-        var request = URLRequest(url: weatherUrl)
-        request.httpMethod = "GET"
+    func getWeather(city: String, completion: @escaping (Result<ResultWeather, GFError>) -> Void) {
+        
         let session = URLSession(configuration: .default)
-
-        let task = session.dataTask(with: request) { (data, response, error) in
-            if let data = data, error == nil {
-                if let response = response as? HTTPURLResponse, response.statusCode == 200 {
-                    if let responseJSON = try? JSONDecoder().decode(DataDecodable.self, from: data),
-                       let tempeture = responseJSON.main?.temp, let weather = responseJSON.weather?.first?.main{
-                            print(tempeture)
-                            print(weather)
-                    }
+        
+        guard let cityEncoded = city.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else {
+            return
+        }
+        
+        guard let weatherUrl = URL(string: baseUrl + cityEncoded) else {
+            completion(.failure(.errorCity))
+            return
+        }
+        
+        let task = session.dataTask(with: weatherUrl) { (data, response, error) in
+            DispatchQueue.main.async {
+                guard let data = data, error == nil, let response = response as? HTTPURLResponse, response.statusCode == 200 else {
+                    completion(.failure(.errorDownload))
+                    return
                 }
+                
+                guard let responseJSON = try? JSONDecoder().decode(DataDecodable.self, from: data),
+                      let tempeture = responseJSON.main?.temp, let weather = responseJSON.weather?.first?.main else {
+                    completion(.failure(.errorDecode))
+                        return
+                }
+                
+                let resultWeather = ResultWeather(tempeture: tempeture, weather: weather)
+                completion(.success(resultWeather))
             }
         }
         task.resume()
     }
 }
+
+    
+    
+     /*func getWeather(city : String, callback : @escaping (Bool, ResultWeather?) -> Void) {
+        let session = URLSession(configuration: .default)
+        
+        guard let cityEncoded = city.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else {
+            return
+        }
+        
+        guard let weatherUrl = URL(string: baseUrl + cityEncoded) else {
+            callback(false, nil)
+            return
+        }
+        
+        let task = session.dataTask(with: weatherUrl) { (data, response, error) in
+            DispatchQueue.main.async {
+                guard let data = data, error == nil, let response = response as? HTTPURLResponse, response.statusCode == 200 else {
+                    callback (false, nil)
+                    return
+                }
+                guard let responseJSON = try? JSONDecoder().decode(DataDecodable.self, from: data),
+                      let tempeture = responseJSON.main?.temp, let weather = responseJSON.weather?.first?.main else {
+                        callback(false, nil)
+                        return
+                }
+                let resultWeather = ResultWeather(tempeture: tempeture, weather: weather)
+                callback(true, resultWeather)
+            }
+        }
+        task.resume()
+    }
+}*/
 
 //créer protocole pour que WeatherService se conforme à lui et utiliser getWeather() dans le controller (le controleur ne connait que le protocole)
 
@@ -77,4 +126,11 @@ struct TempetureDecodable : Decodable{
     var temp_max : Double?
     var pressure : Int?
     var humidity : Int?
+}
+
+
+enum GFError : String, Error{
+    case errorCity = "error city"
+    case errorDownload = "error Dowload"
+    case errorDecode  = "error Decodable"
 }

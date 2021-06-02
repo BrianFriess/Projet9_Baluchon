@@ -10,6 +10,8 @@
 		D31B3CC0265FD86800EB5A5A /* researchWeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D31B3CBF265FD86800EB5A5A /* researchWeatherViewController.swift */; };
 		D31B3CC2265FE6DC00EB5A5A /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = D31B3CC1265FE6DC00EB5A5A /* Weather.swift */; };
 		D3681B612660E16A00A40A2C /* WeatherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3681B602660E16A00A40A2C /* WeatherService.swift */; };
+		D39772D22664D6C2005D1927 /* ResultWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39772D12664D6C2005D1927 /* ResultWeather.swift */; };
+		D39772D52664F12C005D1927 /* AlerteManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39772D42664F12C005D1927 /* AlerteManager.swift */; };
 		D3EB0044265F8D670039D3B7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3EB0043265F8D670039D3B7 /* AppDelegate.swift */; };
 		D3EB0046265F8D670039D3B7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3EB0045265F8D670039D3B7 /* SceneDelegate.swift */; };
 		D3EB004B265F8D670039D3B7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D3EB0049265F8D670039D3B7 /* Main.storyboard */; };
@@ -25,6 +27,8 @@
 		D31B3CBF265FD86800EB5A5A /* researchWeatherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = researchWeatherViewController.swift; sourceTree = "<group>"; };
 		D31B3CC1265FE6DC00EB5A5A /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
 		D3681B602660E16A00A40A2C /* WeatherService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherService.swift; sourceTree = "<group>"; };
+		D39772D12664D6C2005D1927 /* ResultWeather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultWeather.swift; sourceTree = "<group>"; };
+		D39772D42664F12C005D1927 /* AlerteManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlerteManager.swift; sourceTree = "<group>"; };
 		D3EB0040265F8D670039D3B7 /* Baluchon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Baluchon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3EB0043265F8D670039D3B7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D3EB0045265F8D670039D3B7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -49,6 +53,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D39772D32664F112005D1927 /* Manage */ = {
+			isa = PBXGroup;
+			children = (
+				D39772D42664F12C005D1927 /* AlerteManager.swift */,
+			);
+			name = Manage;
+			sourceTree = "<group>";
+		};
 		D3EB0037265F8D670039D3B7 = {
 			isa = PBXGroup;
 			children = (
@@ -68,6 +80,7 @@
 		D3EB0042265F8D670039D3B7 /* Baluchon */ = {
 			isa = PBXGroup;
 			children = (
+				D39772D32664F112005D1927 /* Manage */,
 				D3EB0059265F8E250039D3B7 /* View */,
 				D3EB0058265F8E230039D3B7 /* Controller */,
 				D3EB0057265F8E210039D3B7 /* model */,
@@ -84,6 +97,7 @@
 			children = (
 				D31B3CC1265FE6DC00EB5A5A /* Weather.swift */,
 				D3681B602660E16A00A40A2C /* WeatherService.swift */,
+				D39772D12664D6C2005D1927 /* ResultWeather.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -186,7 +200,9 @@
 				D3EB0061265F9DAA0039D3B7 /* FormWeatherViewController.swift in Sources */,
 				D3EB005F265F9D9D0039D3B7 /* FormMonneyViewController.swift in Sources */,
 				D3EB0046265F8D670039D3B7 /* SceneDelegate.swift in Sources */,
+				D39772D22664D6C2005D1927 /* ResultWeather.swift in Sources */,
 				D31B3CC0265FD86800EB5A5A /* researchWeatherViewController.swift in Sources */,
+				D39772D52664F12C005D1927 /* AlerteManager.swift in Sources */,
 				D31B3CC2265FE6DC00EB5A5A /* Weather.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

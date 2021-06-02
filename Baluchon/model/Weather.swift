@@ -8,8 +8,10 @@
 import Foundation
 
 struct Weather{
-    var cityStarted : String?
-    var cityEnd : String?
+    var nameCityStarted : String?
+    var nameCityEnd : String?
+    var resultCityOne : ResultWeather?
+    var resultCityTwo : ResultWeather?
     
     enum Status{
       case accepted
@@ -17,12 +19,11 @@ struct Weather{
     }
 
     var status: Status {
-        if cityStarted == nil || cityStarted == "" {
+        if nameCityStarted == nil || nameCityStarted == "" {
             return .rejected("Il manque votre ville de départ !")
-        } else if cityEnd == nil || cityEnd == "" {
+        } else if nameCityEnd == nil || nameCityEnd == "" {
           return .rejected("Il manque votre ville d'arrivée !")
         }
         return .accepted
     }
-
 }

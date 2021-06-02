@@ -13,28 +13,31 @@ class FormWeatherViewController: UIViewController {
     @IBOutlet weak var TextFieldCityStarted: UITextField!
     @IBOutlet weak var TextFieldCityEnd: UITextField!
     var weather : Weather!
+    var weatherService : WeatherServiceProtocol!
+    var alerteManager = AlerteManager()
     
     //when we click on the button
     @IBAction func validate() {
         recoverCity()
         checkStatus()
-        WeatherService.getWeather()
     }
     
     
     //we give the value to the "Weather" model
     private func recoverCity(){
-        let cityStarted = TextFieldCityStarted.text
-        let cityEnd = TextFieldCityEnd.text
-        weather = Weather(cityStarted: cityStarted, cityEnd: cityEnd)
+        let nameCityStarted = TextFieldCityStarted.text
+        let nameCityEnd = TextFieldCityEnd.text
+        weather = Weather(nameCityStarted: nameCityStarted, nameCityEnd: nameCityEnd)
     }
     
     //we give the value to the segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "segueToResearchWeather"{
             let successVC = segue.destination as! researchWeatherViewController
-            successVC.cityStarted = weather.cityStarted
-            successVC.cityEnd = weather.cityEnd
+            successVC.cityStarted = weather.nameCityStarted
+            successVC.cityEnd = weather.nameCityEnd
+            successVC.resultCityOne = weather.resultCityOne
+            successVC.resultCityTwo = weather.resultCityTwo
         }
     }
     
@@ -43,11 +46,51 @@ class FormWeatherViewController: UIViewController {
         switch weather.status{
         case .accepted:
             //if it's ok, we launch the next page
-            performSegue(withIdentifier: "segueToResearchWeather", sender: nil)
+            
+            callWeatherCityOne()
+            
         case .rejected(let error):
             //else, we launch an alert
             presentAlert(with: error)
         }
+    }
+    
+
+    
+    private func callWeatherCityOne(){
+        guard let cityStarted = TextFieldCityStarted.text else {return}
+        
+        weatherService.getWeather(city : cityStarted){[weak self] result in
+            switch result{
+            case .success(let resultWeather):
+                self?.weather = Weather(resultCityOne: resultWeather)
+                self?.callWeatherCityTwo()
+                print("ok")
+            case .failure(_):
+                self?.alerteManager.alerteVc(.failedDownloadWeatherCityOne, self!)
+            }
+        }
+    }
+    
+    private func callWeatherCityTwo(){
+        guard let cityEnd = TextFieldCityEnd.text else {return}
+        
+        weatherService.getWeather(city : cityEnd){[weak self] result in
+            switch result{
+            case .success(let resultWeather):
+                self?.weather = Weather(resultCityTwo: resultWeather)
+                self?.performSegue(withIdentifier: "segueToResearchWeather", sender: nil)
+            case .failure(_):
+                self?.alerteManager.alerteVc(.failedDownloadWeatherCityTwo, self!)
+            }
+        }
+    }
+    
+    // ou appeler fonction callWeatherCityTwo dans la completion et lancer après le segue.
+    //mettre en palace result dans l'appel réseau ( ça à l'air mdr )
+    
+    func setUpWeatherService(weatherService : WeatherServiceProtocol){
+        self.weatherService = weatherService
     }
 }
 
