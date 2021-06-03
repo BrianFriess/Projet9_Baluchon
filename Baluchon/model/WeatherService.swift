@@ -10,19 +10,21 @@ import Foundation
 
 
 protocol  WeatherServiceProtocol {
-    func getWeather(city : String, completion : @escaping (Result<ResultWeather, GFError>) -> Void)
+    func getWeather(city : String, completion : @escaping (Result<ResultWeather, CityError>) -> Void)
 }
 
-
+enum CityError : Error{
+    case errorCity
+    case errorDownload
+    case errorDecode
+}
 
 class WeatherService : WeatherServiceProtocol {
-
+    
     private let baseUrl =  "https://api.openweathermap.org/data/2.5/weather?units=metric&appid=ff3e43da662d54517fae410cfb40ad14&mode=json&q="
     
-    func getWeather(city: String, completion: @escaping (Result<ResultWeather, GFError>) -> Void) {
-        
+    func getWeather(city: String, completion: @escaping (Result<ResultWeather, CityError>) -> Void) {
         let session = URLSession(configuration: .default)
-        
         guard let cityEncoded = city.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else {
             return
         }
@@ -51,6 +53,7 @@ class WeatherService : WeatherServiceProtocol {
         }
         task.resume()
     }
+    
 }
 
     
@@ -129,8 +132,4 @@ struct TempetureDecodable : Decodable{
 }
 
 
-enum GFError : String, Error{
-    case errorCity = "error city"
-    case errorDownload = "error Dowload"
-    case errorDecode  = "error Decodable"
-}
+

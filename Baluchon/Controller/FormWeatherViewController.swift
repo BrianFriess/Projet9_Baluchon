@@ -7,14 +7,19 @@
 
 import UIKit
 
-class FormWeatherViewController: UIViewController {
+class FormWeatherViewController: UIViewController{
 
   
     @IBOutlet weak var TextFieldCityStarted: UITextField!
     @IBOutlet weak var TextFieldCityEnd: UITextField!
-    var weather : Weather!
+    var weather = Weather(nameCityStarted: "", nameCityEnd: "", resultCityOne : ResultWeather(tempeture: 0.0, weather: ""), resultCityTwo: ResultWeather(tempeture: 0.0, weather: ""))
     var weatherService : WeatherServiceProtocol!
     var alerteManager = AlerteManager()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+       setUpWeatherService(weatherService : weatherService)
+    }
     
     //when we click on the button
     @IBAction func validate() {
@@ -27,7 +32,8 @@ class FormWeatherViewController: UIViewController {
     private func recoverCity(){
         let nameCityStarted = TextFieldCityStarted.text
         let nameCityEnd = TextFieldCityEnd.text
-        weather = Weather(nameCityStarted: nameCityStarted, nameCityEnd: nameCityEnd)
+        weather.nameCityStarted = nameCityStarted
+        weather.nameCityEnd = nameCityEnd
     }
     
     //we give the value to the segue
@@ -45,10 +51,8 @@ class FormWeatherViewController: UIViewController {
     private func checkStatus(){
         switch weather.status{
         case .accepted:
-            //if it's ok, we launch the next page
-            
+            //if it's ok, we call the network call
             callWeatherCityOne()
-            
         case .rejected(let error):
             //else, we launch an alert
             presentAlert(with: error)
@@ -63,7 +67,7 @@ class FormWeatherViewController: UIViewController {
         weatherService.getWeather(city : cityStarted){[weak self] result in
             switch result{
             case .success(let resultWeather):
-                self?.weather = Weather(resultCityOne: resultWeather)
+                self?.weather.resultCityOne = resultWeather
                 self?.callWeatherCityTwo()
                 print("ok")
             case .failure(_):
@@ -78,7 +82,7 @@ class FormWeatherViewController: UIViewController {
         weatherService.getWeather(city : cityEnd){[weak self] result in
             switch result{
             case .success(let resultWeather):
-                self?.weather = Weather(resultCityTwo: resultWeather)
+                self?.weather.resultCityTwo = resultWeather
                 self?.performSegue(withIdentifier: "segueToResearchWeather", sender: nil)
             case .failure(_):
                 self?.alerteManager.alerteVc(.failedDownloadWeatherCityTwo, self!)
@@ -89,9 +93,11 @@ class FormWeatherViewController: UIViewController {
     // ou appeler fonction callWeatherCityTwo dans la completion et lancer après le segue.
     //mettre en palace result dans l'appel réseau ( ça à l'air mdr )
     
-    func setUpWeatherService(weatherService : WeatherServiceProtocol){
+    func setUpWeatherService (weatherService : WeatherServiceProtocol) {
         self.weatherService = weatherService
     }
+    
+        
 }
 
 
