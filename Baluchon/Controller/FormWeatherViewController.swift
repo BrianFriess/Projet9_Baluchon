@@ -91,7 +91,7 @@ class FormWeatherViewController: UIViewController{
     }
     
     // ou appeler fonction callWeatherCityTwo dans la completion et lancer après le segue.
-    //mettre en palace result dans l'appel réseau ( ça à l'air mdr )
+
     
     func setUpWeatherService (weatherService : WeatherServiceProtocol) {
         self.weatherService = weatherService
