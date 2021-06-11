@@ -7,70 +7,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "1BC9E069-0D5D-443A-993B-8F051F911FBF"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Baluchon/model/WeatherService.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "68"
-            endingLineNumber = "68"
-            landmarkName = "unknown"
-            landmarkType = "0">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "4C30E954-7F74-4155-9ACC-C9122C42A897"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Baluchon/model/WeatherService.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "73"
-            endingLineNumber = "73"
-            landmarkName = "unknown"
-            landmarkType = "0">
-            <Locations>
-               <Location
-                  uuid = "4C30E954-7F74-4155-9ACC-C9122C42A897 - 4169f2f84f34d7a9"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "static Baluchon.WeatherService.getWeather(city: Swift.String, callback: (Swift.Bool, Swift.Optional&lt;Baluchon.ResultWeather&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "Baluchon"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/brianfriess/Documents/OpenClassrooms/projet9/Baluchon/Baluchon/model/WeatherService.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "22"
-                  endingLineNumber = "22"
-                  offsetFromSymbolStart = "548">
-               </Location>
-               <Location
-                  uuid = "4C30E954-7F74-4155-9ACC-C9122C42A897 - f4fb8916cca34949"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in static Baluchon.WeatherService.getWeather(city: Swift.String, callback: (Swift.Bool, Swift.Optional&lt;Baluchon.ResultWeather&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "Baluchon"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/brianfriess/Documents/OpenClassrooms/projet9/Baluchon/Baluchon/model/WeatherService.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "23"
-                  endingLineNumber = "23"
-                  offsetFromSymbolStart = "244">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "97ED8FD5-3C72-416C-AD76-FBB79FACFD9F"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -78,8 +14,8 @@
             filePath = "Baluchon/Controller/FormWeatherViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "65"
-            endingLineNumber = "65"
+            startingLineNumber = "87"
+            endingLineNumber = "87"
             landmarkName = "callWeatherCityOne()"
             landmarkType = "7">
          </BreakpointContent>
@@ -94,8 +30,8 @@
             filePath = "Baluchon/Controller/FormWeatherViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "67"
-            endingLineNumber = "67"
+            startingLineNumber = "89"
+            endingLineNumber = "89"
             landmarkName = "callWeatherCityOne()"
             landmarkType = "7">
          </BreakpointContent>
@@ -103,17 +39,33 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "90996EFB-7FBF-4F07-A2F9-B8539029C6B5"
+            uuid = "21BE70D5-54AF-4375-9C05-9EC72D6FA520"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Baluchon/model/WeatherService.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "15"
+            endingLineNumber = "15"
+            landmarkName = "unknown"
+            landmarkType = "0">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "AB2F467E-3052-42FA-A70C-8699DF0557E2"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Baluchon/Controller/FormWeatherViewController.swift"
+            filePath = "Baluchon/model/Money.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "72"
-            endingLineNumber = "72"
-            landmarkName = "callWeatherCityOne()"
-            landmarkType = "7">
+            startingLineNumber = "12"
+            endingLineNumber = "12"
+            landmarkName = "Money"
+            landmarkType = "14">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

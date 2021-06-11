@@ -14,6 +14,8 @@ struct AlerteManager{
     enum AlerteType{
         case failedDownloadWeatherCityOne
         case failedDownloadWeatherCityTwo
+        case failedDownloadCurrency
+        case failedDownloadTranslate
     
 
         
@@ -23,6 +25,10 @@ struct AlerteManager{
                 return "Veuillez verifier le nom de la ville de départ ou votre connexion internet"
             case .failedDownloadWeatherCityTwo:
                 return "Veuillez verifier le nom de la ville d'arrivée ou votre connexion internet"
+            case .failedDownloadCurrency:
+                return "Veuillez verifier votre connexion Internet"
+            case .failedDownloadTranslate:
+                return "Veuillez verifier votre connexion Interet"
             }
         }
     }

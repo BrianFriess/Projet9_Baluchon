@@ -10,21 +10,40 @@ import UIKit
 class FormWeatherViewController: UIViewController{
 
   
+    @IBOutlet weak var buttonValidate: UIButton!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var TextFieldCityStarted: UITextField!
     @IBOutlet weak var TextFieldCityEnd: UITextField!
     var weather = Weather(nameCityStarted: "", nameCityEnd: "", resultCityOne : ResultWeather(tempeture: 0.0, weather: ""), resultCityTwo: ResultWeather(tempeture: 0.0, weather: ""))
     var weatherService : WeatherServiceProtocol!
     var alerteManager = AlerteManager()
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-       setUpWeatherService(weatherService : weatherService)
+        setUpWeatherService()
     }
     
     //when we click on the button
     @IBAction func validate() {
         recoverCity()
         checkStatus()
+    }
+    
+    enum ButtonHidden{
+        case buttonIsHidden
+        case buttonIsVisible
+    }
+    
+    func setButton(_ style : ButtonHidden){
+        switch style{
+        case .buttonIsHidden:
+            buttonValidate.isHidden = true
+            activityIndicator.isHidden = false
+        case .buttonIsVisible:
+            buttonValidate.isHidden = false
+            activityIndicator.isHidden=true
+        }
     }
     
     
@@ -44,6 +63,7 @@ class FormWeatherViewController: UIViewController{
             successVC.cityEnd = weather.nameCityEnd
             successVC.resultCityOne = weather.resultCityOne
             successVC.resultCityTwo = weather.resultCityTwo
+            
         }
     }
     
@@ -53,6 +73,8 @@ class FormWeatherViewController: UIViewController{
         case .accepted:
             //if it's ok, we call the network call
             callWeatherCityOne()
+           setButton(.buttonIsHidden)
+           
         case .rejected(let error):
             //else, we launch an alert
             presentAlert(with: error)
@@ -64,14 +86,14 @@ class FormWeatherViewController: UIViewController{
     private func callWeatherCityOne(){
         guard let cityStarted = TextFieldCityStarted.text else {return}
         
-        weatherService.getWeather(city : cityStarted){[weak self] result in
+        weatherService.getWeather(city : cityStarted){ result in
             switch result{
             case .success(let resultWeather):
-                self?.weather.resultCityOne = resultWeather
-                self?.callWeatherCityTwo()
-                print("ok")
+                self.weather.resultCityOne = resultWeather
+                self.callWeatherCityTwo()
             case .failure(_):
-                self?.alerteManager.alerteVc(.failedDownloadWeatherCityOne, self!)
+                self.alerteManager.alerteVc(.failedDownloadWeatherCityOne, self)
+                self.setButton(.buttonIsVisible)
             }
         }
     }
@@ -79,25 +101,24 @@ class FormWeatherViewController: UIViewController{
     private func callWeatherCityTwo(){
         guard let cityEnd = TextFieldCityEnd.text else {return}
         
-        weatherService.getWeather(city : cityEnd){[weak self] result in
+        weatherService.getWeather(city : cityEnd){result in
             switch result{
             case .success(let resultWeather):
-                self?.weather.resultCityTwo = resultWeather
-                self?.performSegue(withIdentifier: "segueToResearchWeather", sender: nil)
+                self.weather.resultCityTwo = resultWeather
+                self.performSegue(withIdentifier: "segueToResearchWeather", sender: nil)
+                self.setButton(.buttonIsVisible)
             case .failure(_):
-                self?.alerteManager.alerteVc(.failedDownloadWeatherCityTwo, self!)
+                self.alerteManager.alerteVc(.failedDownloadWeatherCityTwo, self)
+                self.setButton(.buttonIsVisible)
             }
         }
     }
     
-    // ou appeler fonction callWeatherCityTwo dans la completion et lancer après le segue.
 
     
-    func setUpWeatherService (weatherService : WeatherServiceProtocol) {
-        self.weatherService = weatherService
+    func setUpWeatherService () {
+        self.weatherService = WeatherService()
     }
-    
-        
 }
 
 

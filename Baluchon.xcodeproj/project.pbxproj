@@ -9,16 +9,18 @@
 /* Begin PBXBuildFile section */
 		D31B3CC0265FD86800EB5A5A /* researchWeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D31B3CBF265FD86800EB5A5A /* researchWeatherViewController.swift */; };
 		D31B3CC2265FE6DC00EB5A5A /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = D31B3CC1265FE6DC00EB5A5A /* Weather.swift */; };
+		D3210230266A261B00569BE0 /* MoneyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D321022F266A261B00569BE0 /* MoneyService.swift */; };
 		D3681B612660E16A00A40A2C /* WeatherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3681B602660E16A00A40A2C /* WeatherService.swift */; };
 		D39772D22664D6C2005D1927 /* ResultWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39772D12664D6C2005D1927 /* ResultWeather.swift */; };
 		D39772D52664F12C005D1927 /* AlerteManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39772D42664F12C005D1927 /* AlerteManager.swift */; };
+		D3CECD9E267241B1000480FD /* TranslateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CECD9D267241B1000480FD /* TranslateService.swift */; };
 		D3EB0044265F8D670039D3B7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3EB0043265F8D670039D3B7 /* AppDelegate.swift */; };
 		D3EB0046265F8D670039D3B7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3EB0045265F8D670039D3B7 /* SceneDelegate.swift */; };
 		D3EB004B265F8D670039D3B7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D3EB0049265F8D670039D3B7 /* Main.storyboard */; };
 		D3EB004D265F8D670039D3B7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D3EB004C265F8D670039D3B7 /* Assets.xcassets */; };
 		D3EB0050265F8D670039D3B7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D3EB004E265F8D670039D3B7 /* LaunchScreen.storyboard */; };
 		D3EB005B265F94FE0039D3B7 /* ThirstySoftRegular.otf in Resources */ = {isa = PBXBuildFile; fileRef = D3EB005A265F94FE0039D3B7 /* ThirstySoftRegular.otf */; };
-		D3EB005F265F9D9D0039D3B7 /* FormMonneyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3EB005E265F9D9D0039D3B7 /* FormMonneyViewController.swift */; };
+		D3EB005F265F9D9D0039D3B7 /* FormMoneyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3EB005E265F9D9D0039D3B7 /* FormMoneyViewController.swift */; };
 		D3EB0061265F9DAA0039D3B7 /* FormWeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3EB0060265F9DAA0039D3B7 /* FormWeatherViewController.swift */; };
 		D3EB0063265F9DB60039D3B7 /* FormTranslateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3EB0062265F9DB60039D3B7 /* FormTranslateViewController.swift */; };
 /* End PBXBuildFile section */
@@ -26,9 +28,11 @@
 /* Begin PBXFileReference section */
 		D31B3CBF265FD86800EB5A5A /* researchWeatherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = researchWeatherViewController.swift; sourceTree = "<group>"; };
 		D31B3CC1265FE6DC00EB5A5A /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
+		D321022F266A261B00569BE0 /* MoneyService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyService.swift; sourceTree = "<group>"; };
 		D3681B602660E16A00A40A2C /* WeatherService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherService.swift; sourceTree = "<group>"; };
 		D39772D12664D6C2005D1927 /* ResultWeather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultWeather.swift; sourceTree = "<group>"; };
 		D39772D42664F12C005D1927 /* AlerteManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlerteManager.swift; sourceTree = "<group>"; };
+		D3CECD9D267241B1000480FD /* TranslateService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslateService.swift; sourceTree = "<group>"; };
 		D3EB0040265F8D670039D3B7 /* Baluchon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Baluchon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3EB0043265F8D670039D3B7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D3EB0045265F8D670039D3B7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -37,7 +41,7 @@
 		D3EB004F265F8D670039D3B7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D3EB0051265F8D670039D3B7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D3EB005A265F94FE0039D3B7 /* ThirstySoftRegular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = ThirstySoftRegular.otf; sourceTree = "<group>"; };
-		D3EB005E265F9D9D0039D3B7 /* FormMonneyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormMonneyViewController.swift; sourceTree = "<group>"; };
+		D3EB005E265F9D9D0039D3B7 /* FormMoneyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormMoneyViewController.swift; sourceTree = "<group>"; };
 		D3EB0060265F9DAA0039D3B7 /* FormWeatherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormWeatherViewController.swift; sourceTree = "<group>"; };
 		D3EB0062265F9DB60039D3B7 /* FormTranslateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormTranslateViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -96,8 +100,10 @@
 			isa = PBXGroup;
 			children = (
 				D31B3CC1265FE6DC00EB5A5A /* Weather.swift */,
+				D3CECD9D267241B1000480FD /* TranslateService.swift */,
 				D3681B602660E16A00A40A2C /* WeatherService.swift */,
 				D39772D12664D6C2005D1927 /* ResultWeather.swift */,
+				D321022F266A261B00569BE0 /* MoneyService.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -105,9 +111,9 @@
 		D3EB0058265F8E230039D3B7 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				D3EB005E265F9D9D0039D3B7 /* FormMonneyViewController.swift */,
-				D3EB0062265F9DB60039D3B7 /* FormTranslateViewController.swift */,
 				D3EB0060265F9DAA0039D3B7 /* FormWeatherViewController.swift */,
+				D3EB005E265F9D9D0039D3B7 /* FormMoneyViewController.swift */,
+				D3EB0062265F9DB60039D3B7 /* FormTranslateViewController.swift */,
 				D31B3CBF265FD86800EB5A5A /* researchWeatherViewController.swift */,
 			);
 			path = Controller;
@@ -197,9 +203,11 @@
 				D3681B612660E16A00A40A2C /* WeatherService.swift in Sources */,
 				D3EB0063265F9DB60039D3B7 /* FormTranslateViewController.swift in Sources */,
 				D3EB0044265F8D670039D3B7 /* AppDelegate.swift in Sources */,
+				D3CECD9E267241B1000480FD /* TranslateService.swift in Sources */,
 				D3EB0061265F9DAA0039D3B7 /* FormWeatherViewController.swift in Sources */,
-				D3EB005F265F9D9D0039D3B7 /* FormMonneyViewController.swift in Sources */,
+				D3EB005F265F9D9D0039D3B7 /* FormMoneyViewController.swift in Sources */,
 				D3EB0046265F8D670039D3B7 /* SceneDelegate.swift in Sources */,
+				D3210230266A261B00569BE0 /* MoneyService.swift in Sources */,
 				D39772D22664D6C2005D1927 /* ResultWeather.swift in Sources */,
 				D31B3CC0265FD86800EB5A5A /* researchWeatherViewController.swift in Sources */,
 				D39772D52664F12C005D1927 /* AlerteManager.swift in Sources */,
