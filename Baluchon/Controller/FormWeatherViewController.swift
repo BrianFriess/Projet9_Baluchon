@@ -14,7 +14,7 @@ class FormWeatherViewController: UIViewController{
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var TextFieldCityStarted: UITextField!
     @IBOutlet weak var TextFieldCityEnd: UITextField!
-    var weather = Weather(nameCityStarted: "", nameCityEnd: "", resultCityOne : ResultWeather(tempeture: 0.0, weather: ""), resultCityTwo: ResultWeather(tempeture: 0.0, weather: ""))
+    var weather = Weather(nameCityStarted: "", nameCityEnd: "", resultCityOne : ResultWeather(tempeture: 0.0, weather: "", icon: Data.init()), resultCityTwo: ResultWeather(tempeture: 0.0, weather: "", icon: Data.init()))
     var weatherService : WeatherServiceProtocol!
     var alerteManager = AlerteManager()
     

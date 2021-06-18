@@ -21,7 +21,7 @@ class TranslateService : TranslateServiceProtocol{
     
     private let baseUrl  = "https://translation.googleapis.com/language/translate/v2/?target=en&key=AIzaSyD-QkVIg5Ww2FNL8JBI1vflmAel0_IJJDU&q="
     
-    //AIzaSyD-QkVIg5Ww2FNL8JBI1vflmAel0_IJJDU&
+    
     
     func getTrad(_ quote : String, completion: @escaping (Result<String,TradError>) -> Void) {
         let session = URLSession(configuration: .default)

@@ -11,6 +11,10 @@
 		D31B3CC2265FE6DC00EB5A5A /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = D31B3CC1265FE6DC00EB5A5A /* Weather.swift */; };
 		D3210230266A261B00569BE0 /* MoneyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D321022F266A261B00569BE0 /* MoneyService.swift */; };
 		D3681B612660E16A00A40A2C /* WeatherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3681B602660E16A00A40A2C /* WeatherService.swift */; };
+		D3838DC726777346007FBDDD /* WeatherServiceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3838DC626777346007FBDDD /* WeatherServiceTest.swift */; };
+		D3838DCB26777478007FBDDD /* weather.json in Resources */ = {isa = PBXBuildFile; fileRef = D3838DCA26777478007FBDDD /* weather.json */; };
+		D3838DCD267774F0007FBDDD /* FakeResponseDataWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3838DCC267774F0007FBDDD /* FakeResponseDataWeather.swift */; };
+		D386AE232678DBAE00262024 /* URLSessionFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = D386AE222678DBAE00262024 /* URLSessionFake.swift */; };
 		D39772D22664D6C2005D1927 /* ResultWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39772D12664D6C2005D1927 /* ResultWeather.swift */; };
 		D39772D52664F12C005D1927 /* AlerteManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39772D42664F12C005D1927 /* AlerteManager.swift */; };
 		D3CECD9E267241B1000480FD /* TranslateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CECD9D267241B1000480FD /* TranslateService.swift */; };
@@ -25,11 +29,27 @@
 		D3EB0063265F9DB60039D3B7 /* FormTranslateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3EB0062265F9DB60039D3B7 /* FormTranslateViewController.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		D3838DC1267772C9007FBDDD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D3EB0038265F8D670039D3B7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D3EB003F265F8D670039D3B7;
+			remoteInfo = Baluchon;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		D31B3CBF265FD86800EB5A5A /* researchWeatherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = researchWeatherViewController.swift; sourceTree = "<group>"; };
 		D31B3CC1265FE6DC00EB5A5A /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
 		D321022F266A261B00569BE0 /* MoneyService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyService.swift; sourceTree = "<group>"; };
 		D3681B602660E16A00A40A2C /* WeatherService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherService.swift; sourceTree = "<group>"; };
+		D3838DBC267772C9007FBDDD /* BaluchonTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BaluchonTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D3838DC0267772C9007FBDDD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D3838DC626777346007FBDDD /* WeatherServiceTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherServiceTest.swift; sourceTree = "<group>"; };
+		D3838DCA26777478007FBDDD /* weather.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = weather.json; sourceTree = "<group>"; };
+		D3838DCC267774F0007FBDDD /* FakeResponseDataWeather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeResponseDataWeather.swift; sourceTree = "<group>"; };
+		D386AE222678DBAE00262024 /* URLSessionFake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionFake.swift; sourceTree = "<group>"; };
 		D39772D12664D6C2005D1927 /* ResultWeather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultWeather.swift; sourceTree = "<group>"; };
 		D39772D42664F12C005D1927 /* AlerteManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlerteManager.swift; sourceTree = "<group>"; };
 		D3CECD9D267241B1000480FD /* TranslateService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslateService.swift; sourceTree = "<group>"; };
@@ -47,6 +67,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		D3838DB9267772C9007FBDDD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D3EB003D265F8D670039D3B7 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -57,6 +84,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D3838DBD267772C9007FBDDD /* BaluchonTests */ = {
+			isa = PBXGroup;
+			children = (
+				D3838DC0267772C9007FBDDD /* Info.plist */,
+				D3838DC626777346007FBDDD /* WeatherServiceTest.swift */,
+				D3838DCA26777478007FBDDD /* weather.json */,
+				D3838DCC267774F0007FBDDD /* FakeResponseDataWeather.swift */,
+				D386AE222678DBAE00262024 /* URLSessionFake.swift */,
+			);
+			path = BaluchonTests;
+			sourceTree = "<group>";
+		};
 		D39772D32664F112005D1927 /* Manage */ = {
 			isa = PBXGroup;
 			children = (
@@ -69,6 +108,7 @@
 			isa = PBXGroup;
 			children = (
 				D3EB0042265F8D670039D3B7 /* Baluchon */,
+				D3838DBD267772C9007FBDDD /* BaluchonTests */,
 				D3EB0041265F8D670039D3B7 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -77,6 +117,7 @@
 			isa = PBXGroup;
 			children = (
 				D3EB0040265F8D670039D3B7 /* Baluchon.app */,
+				D3838DBC267772C9007FBDDD /* BaluchonTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -132,6 +173,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		D3838DBB267772C9007FBDDD /* BaluchonTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D3838DC5267772C9007FBDDD /* Build configuration list for PBXNativeTarget "BaluchonTests" */;
+			buildPhases = (
+				D3838DB8267772C9007FBDDD /* Sources */,
+				D3838DB9267772C9007FBDDD /* Frameworks */,
+				D3838DBA267772C9007FBDDD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D3838DC2267772C9007FBDDD /* PBXTargetDependency */,
+			);
+			name = BaluchonTests;
+			productName = BaluchonTests;
+			productReference = D3838DBC267772C9007FBDDD /* BaluchonTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		D3EB003F265F8D670039D3B7 /* Baluchon */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = D3EB0054265F8D670039D3B7 /* Build configuration list for PBXNativeTarget "Baluchon" */;
@@ -158,6 +217,11 @@
 				LastSwiftUpdateCheck = 1250;
 				LastUpgradeCheck = 1250;
 				TargetAttributes = {
+					D3838DBB267772C9007FBDDD = {
+						CreatedOnToolsVersion = 12.5;
+						LastSwiftMigration = 1250;
+						TestTargetID = D3EB003F265F8D670039D3B7;
+					};
 					D3EB003F265F8D670039D3B7 = {
 						CreatedOnToolsVersion = 12.5;
 					};
@@ -177,11 +241,20 @@
 			projectRoot = "";
 			targets = (
 				D3EB003F265F8D670039D3B7 /* Baluchon */,
+				D3838DBB267772C9007FBDDD /* BaluchonTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		D3838DBA267772C9007FBDDD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D3838DCB26777478007FBDDD /* weather.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D3EB003E265F8D670039D3B7 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -196,6 +269,16 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		D3838DB8267772C9007FBDDD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D3838DCD267774F0007FBDDD /* FakeResponseDataWeather.swift in Sources */,
+				D386AE232678DBAE00262024 /* URLSessionFake.swift in Sources */,
+				D3838DC726777346007FBDDD /* WeatherServiceTest.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D3EB003C265F8D670039D3B7 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -217,6 +300,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		D3838DC2267772C9007FBDDD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D3EB003F265F8D670039D3B7 /* Baluchon */;
+			targetProxy = D3838DC1267772C9007FBDDD /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		D3EB0049265F8D670039D3B7 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
@@ -237,6 +328,49 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		D3838DC3267772C9007FBDDD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = MMWV3F3KVU;
+				INFOPLIST_FILE = BaluchonTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = fr.FriessBrian.BaluchonTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Baluchon.app/Baluchon";
+			};
+			name = Debug;
+		};
+		D3838DC4267772C9007FBDDD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = MMWV3F3KVU;
+				INFOPLIST_FILE = BaluchonTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = fr.FriessBrian.BaluchonTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Baluchon.app/Baluchon";
+			};
+			name = Release;
+		};
 		D3EB0052265F8D670039D3B7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -394,6 +528,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		D3838DC5267772C9007FBDDD /* Build configuration list for PBXNativeTarget "BaluchonTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D3838DC3267772C9007FBDDD /* Debug */,
+				D3838DC4267772C9007FBDDD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		D3EB003B265F8D670039D3B7 /* Build configuration list for PBXProject "Baluchon" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

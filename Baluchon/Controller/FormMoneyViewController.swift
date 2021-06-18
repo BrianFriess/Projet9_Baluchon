@@ -18,30 +18,43 @@ class FormMoneyViewController: UIViewController{
     let tabCurrency = ["","USD","JPY","RUB"]
     var moneyService : MoneyServiceProtocol! = MoneyService()
     var alerteManager = AlerteManager()
-    
+    var DataMoney = DataMoneyDecodable()
+    var result = 0.0
    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        callCurrency()
     }
+    
   
     func callCurrency(){
-        let currentMoney = Double(textFieldMoney.text!)
-        moneyService.getMoney(money : currentMoney ?? 0, currency: tabCurrency[rangePickerView]) {  result in
+        moneyService.getMoney() { [self]  result in
             switch result{
             case .success(let resultMoney):
-                self.labelTextConvert.text = String(resultMoney)
+                DataMoney = resultMoney
             case .failure(_):
                 self.alerteManager.alerteVc(.failedDownloadCurrency, self)
             }
         }
     }
+    
 
+    func setUpCurrency(){
+        guard let currentMoney = Double(textFieldMoney.text!) else{
+            return
+        }
+        result =  Double(DataMoney.rates?.getValue(tabCurrency[rangePickerView]) ?? 0) * currentMoney
+        labelTextConvert.text = String(result)
+    }
+    
     
     func textFieldDidChangeSelection(_ textField: UITextField) {
-        callCurrency()
+        setUpCurrency()
     }
+
 }
+
+
 
 
 extension FormMoneyViewController : UITextFieldDelegate  {
@@ -55,6 +68,8 @@ extension FormMoneyViewController : UITextFieldDelegate  {
         return true
     }
 }
+
+
 
 
 
@@ -74,7 +89,7 @@ extension FormMoneyViewController : UIPickerViewDataSource, UIPickerViewDelegate
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        callCurrency()
+        setUpCurrency()
     }
 }
 

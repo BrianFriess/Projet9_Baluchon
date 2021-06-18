@@ -17,14 +17,22 @@ enum CityError : Error{
     case errorCity
     case errorDownload
     case errorDecode
+    case errorIcon
 }
 
 class WeatherService : WeatherServiceProtocol {
     
+    
     private let baseUrl =  "https://api.openweathermap.org/data/2.5/weather?units=metric&appid=ff3e43da662d54517fae410cfb40ad14&mode=json&q="
+    private var session = URLSession(configuration: .default)
+    private var idIcon = ""
+    private let baseUrlIcon = "http://openweathermap.org/img/w/"
+    private let png = ".png"
+    var resultIcon  = Data.init()
+    
     
     func getWeather(city: String, completion: @escaping (Result<ResultWeather, CityError>) -> Void) {
-        let session = URLSession(configuration: .default)
+        
         guard let cityEncoded = city.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else {
             return
         }
@@ -42,13 +50,45 @@ class WeatherService : WeatherServiceProtocol {
                 }
                 
                 guard let responseJSON = try? JSONDecoder().decode(DataDecodable.self, from: data),
-                      let tempeture = responseJSON.main?.temp, let weather = responseJSON.weather?.first?.main else {
+                      let tempeture = responseJSON.main?.temp, let weather = responseJSON.weather?.first?.main, let idIcon = responseJSON.weather?.first?.icon else {
                     completion(.failure(.errorDecode))
-                        return
+                    return
                 }
                 
-                let resultWeather = ResultWeather(tempeture: tempeture, weather: weather)
-                completion(.success(resultWeather))
+                
+                self.idIcon = idIcon
+                self.getIcon { result in
+                    switch result{
+                    case .success(let dataIcon):
+                        self.resultIcon = dataIcon
+                        let resultWeather = ResultWeather(tempeture: tempeture, weather: weather, icon : self.resultIcon)
+                        completion(.success(resultWeather))
+                    case .failure(_):
+                        return
+                    }
+                }
+            }
+        }
+        task.resume()
+    }
+    
+    
+    
+    func getIcon(completion: @escaping (Result<Data, CityError>) -> Void){
+        guard let iconUrl = URL(string: baseUrlIcon + idIcon + png) else {
+            completion(.failure(.errorIcon))
+            return
+        }
+        
+        let task = session.dataTask(with: iconUrl) { (data, response, error) in
+            DispatchQueue.main.async {
+                
+                guard let data = data, error == nil, let response = response as? HTTPURLResponse, response.statusCode == 200 else {
+                    completion(.failure(.errorDownload))
+                    return
+                }
+                completion(.success(data))
+                
             }
         }
         task.resume()

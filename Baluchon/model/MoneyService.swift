@@ -8,7 +8,7 @@
 import Foundation
 
 protocol MoneyServiceProtocol {
-    func getMoney(money : Double, currency : String, completion : @escaping(Result<Double,MoneyError>) -> Void)
+    func getMoney(completion : @escaping(Result<DataMoneyDecodable,MoneyError>) -> Void)
 }
 
 enum MoneyError : Error{
@@ -23,8 +23,8 @@ class MoneyService : MoneyServiceProtocol{
     private let url = "http://data.fixer.io/api/latest?access_key=1a509922f5e0282a1fd10110cf1e4bcf"
 
     
-    func getMoney(money : Double, currency : String, completion : @escaping(Result<Double,MoneyError>) -> Void){
-        //changer double pour le dataMOneyDecodable et recuperer les valeurs dans le controleur
+    func getMoney(completion : @escaping(Result<DataMoneyDecodable,MoneyError>) -> Void){
+        
         let session = URLSession(configuration: .default)
         
         guard let moneyUrl = URL(string: url) else{
@@ -39,23 +39,20 @@ class MoneyService : MoneyServiceProtocol{
                     return
                 }
                 
-                guard let responseJSON = try? JSONDecoder().decode(DataMoneyDecodable.self, from : data),
-                      let currency = responseJSON.rates?.getValue(currency) else{
+                guard let responseJSON = try? JSONDecoder().decode(DataMoneyDecodable.self, from : data) else{
                     completion(.failure(.errorDecode))
                     return
                 }
-                print (currency)
-                completion(.success(currency*money))
+                completion(.success(responseJSON))
             }
-            
         }
         task.resume()
     }
 }
 
+
 struct DataMoneyDecodable : Decodable{
     var rates : CurrencyDecodable?
-    
 }
 
 struct CurrencyDecodable : Decodable{
@@ -71,7 +68,6 @@ struct CurrencyDecodable : Decodable{
         default:
             return 0.0
         }
-        
     }
            var AED : Double?
            var AFN : Double?

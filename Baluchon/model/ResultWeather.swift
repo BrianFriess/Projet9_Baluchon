@@ -11,4 +11,5 @@ import Foundation
 struct ResultWeather{
     var tempeture : Double
     var weather : String
+    var icon : Data
 }
