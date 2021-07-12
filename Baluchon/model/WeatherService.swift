@@ -7,28 +7,72 @@
 
 import Foundation
 
-class WeatherService{
+
+
+protocol  WeatherServiceProtocol {
+    func getWeather(city : String, completion : @escaping (Result<ResultWeather, CityError>) -> Void)
+}
+
+enum CityError : Error{
+    case errorCity
+    case errorDownload
+    case errorDecode
+    case errorIcon
+    case errorReturnIcon
+}
+
+class WeatherService : WeatherServiceProtocol {
     
-    var cityStartService = "londres"
-    var cityEndService = "paris"
-    
-    
-    
-    private static let weatherUrl = URL(string: "https://api.openweathermap.org/data/2.5/weather?units=metric&appid=ff3e43da662d54517fae410cfb40ad14&mode=json&q=londres")!
 
     
-    static func getWeather() {
-        var request = URLRequest(url: weatherUrl)
-        request.httpMethod = "GET"
-        let session = URLSession(configuration: .default)
+    private let baseUrl =  "https://api.openweathermap.org/data/2.5/weather?units=metric&appid=ff3e43da662d54517fae410cfb40ad14&mode=json&q="
+    //we create an UrlSession
+    private var session : URLSession
+    var iconService : WeatherIconService
+    var resultIcon  = Data.init()
 
-        let task = session.dataTask(with: request) { (data, response, error) in
-            if let data = data, error == nil {
-                if let response = response as? HTTPURLResponse, response.statusCode == 200 {
-                    if let responseJSON = try? JSONDecoder().decode(DataDecodable.self, from: data),
-                       let tempeture = responseJSON.main?.temp, let weather = responseJSON.weather?.first?.main{
-                            print(tempeture)
-                            print(weather)
+    //we create an init for session
+    init (session : URLSession, iconService : WeatherIconService){
+        self.session = session
+        self.iconService = iconService
+    }
+    
+    //this is our network call
+    func getWeather(city: String, completion: @escaping (Result<ResultWeather, CityError>) -> Void) {
+        
+        // we use this to encode our URL in case if our city have a space
+        guard let cityEncoded = city.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed), let weatherUrl = URL(string: baseUrl + cityEncoded)  else {
+            completion(.failure(.errorCity))
+            return
+        }
+    
+        //we create our task with our weatherUrl
+        let task = session.dataTask(with: weatherUrl) { (data, response, error) in
+            DispatchQueue.main.async {
+                
+                // we check if our response is ok
+                guard let data = data, error == nil, let response = response as? HTTPURLResponse, response.statusCode == 200 else {
+                    completion(.failure(.errorDownload))
+                    return
+                }
+                
+                //we retrieve the data we need in the JSON
+                guard let responseJSON = try? JSONDecoder().decode(DataDecodable.self, from: data),
+                      let tempeture = responseJSON.main?.temp, let weather = responseJSON.weather?.first?.main, let idIcon = responseJSON.weather?.first?.icon else {
+                    completion(.failure(.errorDecode))
+                    return
+                }
+                
+                //we call the function getIcon to retrieve the logo in an other network call
+                self.iconService.getIcon(idIcon : idIcon) { result in
+                    switch result{
+                    case .success(let dataIcon):
+                        self.resultIcon = dataIcon
+                        //we create an object with all the data we need
+                        let resultWeather = ResultWeather(tempeture: tempeture, weather: weather, icon : self.resultIcon)
+                        completion(.success(resultWeather))
+                    case .failure(_):
+                        completion(.failure(.errorReturnIcon))
                     }
                 }
             }
@@ -37,29 +81,51 @@ class WeatherService{
     }
 }
 
-//créer protocole pour que WeatherService se conforme à lui et utiliser getWeather() dans le controller (le controleur ne connait que le protocole)
+class WeatherIconService{
+    
+    private var session : URLSession
+    private let baseUrlIcon = "http://openweathermap.org/img/w/"
+    private let png = ".png"
+    
+
+    //we create an init for session
+    init (session : URLSession = URLSession(configuration: .default)){
+        self.session = session
+    }
+    
+        func getIcon(idIcon : String, completion: @escaping (Result<Data, CityError>) -> Void){
+            guard let iconUrl = URL(string: baseUrlIcon + idIcon + png) else {
+                completion(.failure(.errorIcon))
+                return
+            }
+            
+            let task = session.dataTask(with: iconUrl) { (data, response, error) in
+                DispatchQueue.main.async {
+                    guard let data = data, error == nil, let response = response as? HTTPURLResponse, response.statusCode == 200 else {
+                        completion(.failure(.errorDownload))
+                        return
+                    }
+                    completion(.success(data))
+                }
+            }
+            task.resume()
+        }
+    
+}
+
+
+
+
 
 struct DataDecodable : Decodable{
     var coord : CoordinateDecodable?
     var weather : [WeatherDecodable]?
     var main : TempetureDecodable?
-    
-    /*enum codingKeys : String, CodingKey{
-        case coordinate = "coord"
-        case weather = "weather"
-        case temperature = "main"
-    }*/
-    //codingKey ne fonctionne pas ??
 }
 
 struct CoordinateDecodable : Decodable{
     var lon: Double?
     var lat : Double?
-    
-   /* enum codingKeys : String, CodingKey{
-        case longitude = "lon"
-        case latitude = "lat"
-    }*/
 }
 
 struct WeatherDecodable : Decodable{
@@ -78,3 +144,6 @@ struct TempetureDecodable : Decodable{
     var pressure : Int?
     var humidity : Int?
 }
+
+
+
