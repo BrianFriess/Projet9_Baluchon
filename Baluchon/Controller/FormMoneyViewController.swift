@@ -11,16 +11,17 @@ class FormMoneyViewController: UIViewController{
 
     
     @IBOutlet weak var textFieldMoney: UITextField!
-    
     @IBOutlet weak var labelTextConvert: UILabel!
-    
     var rangePickerView = 0
     let tabCurrency = ["","USD","JPY","RUB"]
-    var moneyService : MoneyServiceProtocol! = MoneyService()
+    var moneyService : MoneyServiceProtocol! = MoneyService(session: URLSession(configuration: .default), url: UrlObject())
     var alerteManager = AlerteManager()
-    var DataMoney = DataMoneyDecodable()
-    var result = 0.0
+    var dataMoney = DataMoneyDecodable()
+    
+    
+    
    
+    //when we started the page, we call our network call
     override func viewDidLoad() {
         super.viewDidLoad()
         callCurrency()
@@ -28,11 +29,13 @@ class FormMoneyViewController: UIViewController{
     
   
     func callCurrency(){
-        moneyService.getMoney() { [self]  result in
+        moneyService.getMoney() { result in
             switch result{
             case .success(let resultMoney):
-                DataMoney = resultMoney
+                //if the network call is a success, we give our result at dataMoney
+                self.dataMoney = resultMoney
             case .failure(_):
+                //else, we call an alerte
                 self.alerteManager.alerteVc(.failedDownloadCurrency, self)
             }
         }
@@ -40,14 +43,16 @@ class FormMoneyViewController: UIViewController{
     
 
     func setUpCurrency(){
+        //when we call this function, we check if the textField is empty or not
         guard let currentMoney = Double(textFieldMoney.text!) else{
             return
         }
-        result =  Double(DataMoney.rates?.getValue(tabCurrency[rangePickerView]) ?? 0) * currentMoney
+        //we take currentMoney in our textField and we use the function getValue in "dataMoney" for check our currency in tabCurrency with the range rangePickerView and multiply our conversion by currentMoney
+        let result =  Double(dataMoney.rates?.getValue(tabCurrency[rangePickerView]) ?? 0) * currentMoney
         labelTextConvert.text = String(result)
     }
     
-    
+    //when we change the value in the textField, we call the function "setUpCurrency"
     func textFieldDidChangeSelection(_ textField: UITextField) {
         setUpCurrency()
     }
@@ -55,7 +60,7 @@ class FormMoneyViewController: UIViewController{
 }
 
 
-
+//keyboard management
 
 extension FormMoneyViewController : UITextFieldDelegate  {
     
@@ -71,8 +76,6 @@ extension FormMoneyViewController : UITextFieldDelegate  {
 
 
 
-
-
 extension FormMoneyViewController : UIPickerViewDataSource, UIPickerViewDelegate{
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -83,11 +86,13 @@ extension FormMoneyViewController : UIPickerViewDataSource, UIPickerViewDelegate
         return tabCurrency.count
     }
     
+    // we return in the pickerView the value of tabCurrency and we give the row at rangePickerView
    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         rangePickerView = row
         return tabCurrency[row]
     }
     
+    //when we use the pickerView, we call the function setUpCurrency
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         setUpCurrency()
     }

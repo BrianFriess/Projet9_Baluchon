@@ -17,28 +17,45 @@ enum MoneyError : Error{
     case errorDecode
 }
 
+protocol UrlProtocol{
+    var url : String { get }
+}
+
+struct UrlObject : UrlProtocol{
+    var url = "http://data.fixer.io/api/latest?access_key=2abf4e43c6ec1902e28ad6aa3e3b47b4"
+    
+}
+
 class MoneyService : MoneyServiceProtocol{
     
+    //we create an UrlSession
+    private var session : URLSession
     
-    private let url = "http://data.fixer.io/api/latest?access_key=1a509922f5e0282a1fd10110cf1e4bcf"
+    private var urlObject : UrlProtocol
 
+    //we create an init for session
+    init (session : URLSession, url : UrlProtocol){
+        self.session = session
+        self.urlObject = url
+    }
     
+    //this is our network call
     func getMoney(completion : @escaping(Result<DataMoneyDecodable,MoneyError>) -> Void){
         
-        let session = URLSession(configuration: .default)
-        
-        guard let moneyUrl = URL(string: url) else{
+        guard let moneyUrl = URL(string: urlObject.url) else{
             completion(.failure(.errorMoney))
             return
         }
-        
+        //we create our task with our moneyUrl
         let task = session.dataTask(with: moneyUrl) { (data, response, error) in
             DispatchQueue.main.async {
+                // we check if our response is ok
                 guard let data = data, error == nil, let response = response as? HTTPURLResponse, response.statusCode == 200 else{
                     completion(.failure(.errorDownload))
                     return
                 }
                 
+                //we retrieve the data we need in the JSON
                 guard let responseJSON = try? JSONDecoder().decode(DataMoneyDecodable.self, from : data) else{
                     completion(.failure(.errorDecode))
                     return
@@ -51,12 +68,13 @@ class MoneyService : MoneyServiceProtocol{
 }
 
 
-struct DataMoneyDecodable : Decodable{
+struct DataMoneyDecodable : Decodable, Equatable{
     var rates : CurrencyDecodable?
 }
 
-struct CurrencyDecodable : Decodable{
+struct CurrencyDecodable : Decodable, Equatable{
     
+    //we use this function for return a value in our data
     func getValue(_ value : String) -> Double?{
         switch value{
         case "USD":

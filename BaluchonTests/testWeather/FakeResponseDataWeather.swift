@@ -7,6 +7,8 @@
 
 import Foundation
 
+@testable import Baluchon
+
 class FakeResponseDataWeather{
     
     static let responseOK = HTTPURLResponse(
@@ -25,6 +27,18 @@ class FakeResponseDataWeather{
         let url = bundle.url(forResource: "weather", withExtension: "json")!
         return try! Data(contentsOf: url)
     }
+        
+        static var weatherFakeData: Data?{
+            let bundle = Bundle(for: FakeResponseDataWeather.self)
+            let url = bundle.url(forResource: "weatherFake", withExtension: "json")!
+            return try! Data(contentsOf: url)
+    }
     
     static let weatherIncorrectData = "erreur".data(using: .utf8)!
+    
+    static let iconData = "03d".data(using: .utf8)!
+    
+    static let resultData : ResultWeather = .init(tempeture: 25.99, weather: "Clouds", icon: "03d".data(using: .utf8)!)
+    
+    //static let urlIcon = "http://openweathermap.org/img/w/"
 }

@@ -15,16 +15,12 @@ class FormWeatherViewController: UIViewController{
     @IBOutlet weak var TextFieldCityStarted: UITextField!
     @IBOutlet weak var TextFieldCityEnd: UITextField!
     var weather = Weather(nameCityStarted: "", nameCityEnd: "", resultCityOne : ResultWeather(tempeture: 0.0, weather: "", icon: Data.init()), resultCityTwo: ResultWeather(tempeture: 0.0, weather: "", icon: Data.init()))
-    var weatherService : WeatherServiceProtocol!
+    var weatherService : WeatherServiceProtocol! = WeatherService(session: URLSession(configuration: .default), iconService: WeatherIconService())
     var alerteManager = AlerteManager()
     
+
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        setUpWeatherService()
-    }
-    
-    //when we click on the button
+    //when we click on the button, we call the function recoverCity and checkStatus
     @IBAction func validate() {
         recoverCity()
         checkStatus()
@@ -34,7 +30,7 @@ class FormWeatherViewController: UIViewController{
         case buttonIsHidden
         case buttonIsVisible
     }
-    
+    //we use this function for hide the button or not
     func setButton(_ style : ButtonHidden){
         switch style{
         case .buttonIsHidden:
@@ -47,12 +43,10 @@ class FormWeatherViewController: UIViewController{
     }
     
     
-    //we give the value to the "Weather" model
+    //we give the value of the textFiled to the "Weather" model
     private func recoverCity(){
-        let nameCityStarted = TextFieldCityStarted.text
-        let nameCityEnd = TextFieldCityEnd.text
-        weather.nameCityStarted = nameCityStarted
-        weather.nameCityEnd = nameCityEnd
+        weather.nameCityStarted = TextFieldCityStarted.text
+        weather.nameCityEnd = TextFieldCityEnd.text
     }
     
     //we give the value to the segue
@@ -63,7 +57,6 @@ class FormWeatherViewController: UIViewController{
             successVC.cityEnd = weather.nameCityEnd
             successVC.resultCityOne = weather.resultCityOne
             successVC.resultCityTwo = weather.resultCityTwo
-            
         }
     }
     
@@ -89,9 +82,11 @@ class FormWeatherViewController: UIViewController{
         weatherService.getWeather(city : cityStarted){ result in
             switch result{
             case .success(let resultWeather):
+                //if the network call is a success, we give the result at the model and we call an other network call for the 2nd city
                 self.weather.resultCityOne = resultWeather
                 self.callWeatherCityTwo()
             case .failure(_):
+                //else, we call an alerte
                 self.alerteManager.alerteVc(.failedDownloadWeatherCityOne, self)
                 self.setButton(.buttonIsVisible)
             }
@@ -104,6 +99,7 @@ class FormWeatherViewController: UIViewController{
         weatherService.getWeather(city : cityEnd){result in
             switch result{
             case .success(let resultWeather):
+                //if the network call is a success, we give the result at the model and we take the value to the segue
                 self.weather.resultCityTwo = resultWeather
                 self.performSegue(withIdentifier: "segueToResearchWeather", sender: nil)
                 self.setButton(.buttonIsVisible)
@@ -113,18 +109,12 @@ class FormWeatherViewController: UIViewController{
             }
         }
     }
-    
-
-    
-    func setUpWeatherService () {
-        self.weatherService = WeatherService()
-    }
 }
 
 
 
 
-//gestion du clavier dans cette extension
+//keyBoar dManagement
 
 extension FormWeatherViewController : UITextFieldDelegate{
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

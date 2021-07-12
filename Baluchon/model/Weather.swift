@@ -18,6 +18,7 @@ struct Weather{
       case rejected(String)
     }
 
+    //we check the value and we return a String for an alerte 
     var status: Status {
         if nameCityStarted == nil || nameCityStarted == "" {
             return .rejected("Il manque votre ville de départ !")
@@ -26,4 +27,10 @@ struct Weather{
         }
         return .accepted
     }
+}
+
+struct ResultWeather : Equatable{
+    var tempeture : Double
+    var weather : String
+    var icon : Data
 }
